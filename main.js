@@ -1,7 +1,7 @@
 // Select img element for cat image
 const img = document.querySelector('img');
 
-// Fetch cat image from GIPHY
+// Promise of getting a cat image from GIPHY
 fetch('https://api.giphy.com/v1/gifs/translate?api_key=NetagrbBzo5BdC3fcYAZbfgyHMEbXGOc&s=cats', {mode: 'cors'})
     .then(function(response) {
 
@@ -28,7 +28,7 @@ const windSpeed = document.querySelector('#wind-speed');
 const windDirection = document.querySelector('#wind-direction');
 const precipitation = document.querySelector('#precipitation');
 
-// Fetching weather data from Milwaukee
+// Promise of getting weather data from Milwaukee
 fetch('https://api.weatherapi.com/v1/current.json?key=4b877b769355464b816210331231212&q=milwaukee', {mode: 'cors'})
     .then(function(response) {
         return response.json();
