@@ -36,13 +36,15 @@ fetch('https://api.giphy.com/v1/gifs/translate?api_key=NetagrbBzo5BdC3fcYAZbfgyH
     });
 */
 
-
-// Select div containers for different parts of the weather data
+// Select div containers for different parts of the weather data and search box
 const city = document.querySelector('#city');
 const temperature = document.querySelector('#temperature');
 const windSpeed = document.querySelector('#wind-speed');
 const windDirection = document.querySelector('#wind-direction');
 const precipitation = document.querySelector('#precipitation');
+const cityInputBox = document.querySelector('#input-box-city');
+const clickSubmit = document.querySelector('#submit');
+
 
 
 // Promise of getting weather data from Milwaukee
