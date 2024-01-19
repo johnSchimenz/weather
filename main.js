@@ -2,7 +2,7 @@
 const img = document.querySelector('img');
 
 // Promise of getting a cat image from GIPHY
-async function getCats() {
+async function getCatsPromise() {
 
     // Fetch cat GIPH data from the website, then assign that data to a variable
     const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=NetagrbBzo5BdC3fcYAZbfgyHMEbXGOc&s=cats', {mode: 'cors'});
@@ -13,9 +13,9 @@ async function getCats() {
     // DOM - display cat GIPH on the webpage
     img.src = catData.data.images.original.url;
 }
-getCats();
+getCatsPromise();
 
-/*
+/* OLD promise notation
 // Promise of getting a cat image from GIPHY
 fetch('https://api.giphy.com/v1/gifs/translate?api_key=NetagrbBzo5BdC3fcYAZbfgyHMEbXGOc&s=cats', {mode: 'cors'})
     .then(function(response) {
@@ -46,7 +46,7 @@ const precipitation = document.querySelector('#precipitation');
 
 
 // Promise of getting weather data from Milwaukee
-async function getWeather() {
+async function getWeatherPromise() {
 
     // Fetch weather data from website, then assign that data to a variable
     const weatherResponse = await fetch('https://api.weatherapi.com/v1/current.json?key=4b877b769355464b816210331231212&q=milwaukee', {mode: 'cors'})
@@ -61,8 +61,9 @@ async function getWeather() {
     windDirection.textContent = 'Wind Direction: ' + weatherData.current.wind_degree + ' degrees ' + weatherData.current.wind_dir;
     precipitation.textContent = 'Condition: ' + weatherData.current.condition.text;
 }
-getWeather();
-/*
+getWeatherPromise();
+
+/*  OLD promise notation
 // Promise of getting weather data from Milwaukee
 fetch('https://api.weatherapi.com/v1/current.json?key=4b877b769355464b816210331231212&q=milwaukee', {mode: 'cors'})
     .then(function(response) {
