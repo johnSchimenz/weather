@@ -45,25 +45,33 @@ const precipitation = document.querySelector('#precipitation');
 const cityInputBox = document.querySelector('#input-box-city');
 const clickSubmit = document.querySelector('#submit');
 
-
+// DOM - get weather data when Sumbit button is clicked
+clickSubmit.addEventListener('click', () => {
+    
+    // Get name of the city
+    const cityName = cityInputBox.value;
 
 // Promise of getting weather data from Milwaukee
-async function getWeatherPromise() {
+    async function getWeatherPromise() {
 
-    // Fetch weather data from website, then assign that data to a variable
-    const weatherResponse = await fetch('https://api.weatherapi.com/v1/current.json?key=4b877b769355464b816210331231212&q=milwaukee', {mode: 'cors'})
-    
-    // Format weather data into JSON, then assigne that data to a variable
-    const weatherData = await weatherResponse.json();
+        // Fetch weather data from website, then assign that data to a variable
+        const weatherResponse = await fetch('https://api.weatherapi.com/v1/current.json?key=4b877b769355464b816210331231212&q=milwaukee', {mode: 'cors'})
+        
+        // Format weather data into JSON, then assigne that data to a variable
+        const weatherData = await weatherResponse.json();
 
-    // DOM - Display weather data on webpage
-    city.textContent = 'City: ' + weatherData.location.name;
-    temperature.textContent = 'Temperature: ' + weatherData.current.temp_f + ' degrees F';
-    windSpeed.textContent = 'Wind Speed: ' + weatherData.current.wind_mph;
-    windDirection.textContent = 'Wind Direction: ' + weatherData.current.wind_degree + ' degrees ' + weatherData.current.wind_dir;
-    precipitation.textContent = 'Condition: ' + weatherData.current.condition.text;
-}
-getWeatherPromise();
+        // DOM - Display weather data on webpage
+        city.textContent = 'City: ' + weatherData.location.name;
+        temperature.textContent = 'Temperature: ' + weatherData.current.temp_f + ' degrees F';
+        windSpeed.textContent = 'Wind Speed: ' + weatherData.current.wind_mph;
+        windDirection.textContent = 'Wind Direction: ' + weatherData.current.wind_degree + ' degrees ' + weatherData.current.wind_dir;
+        precipitation.textContent = 'Condition: ' + weatherData.current.condition.text;
+    }
+    getWeatherPromise();
+
+})
+
+
 
 /*  OLD promise notation
 // Promise of getting weather data from Milwaukee
