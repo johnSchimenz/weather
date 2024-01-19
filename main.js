@@ -3,8 +3,14 @@ const img = document.querySelector('img');
 
 // Promise of getting a cat image from GIPHY
 async function getCats() {
+
+    // Fetch cat GIPH data from the website, then assign that data to a variable
     const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=NetagrbBzo5BdC3fcYAZbfgyHMEbXGOc&s=cats', {mode: 'cors'});
+    
+    // Format cat GIPH data into JSON, then assign that formatted data to a variable
     const catData = await response.json();
+
+    // DOM - display cat GIPH on the webpage
     img.src = catData.data.images.original.url;
 }
 getCats();
@@ -38,6 +44,25 @@ const windSpeed = document.querySelector('#wind-speed');
 const windDirection = document.querySelector('#wind-direction');
 const precipitation = document.querySelector('#precipitation');
 
+
+// Promise of getting weather data from Milwaukee
+async function getWeather() {
+
+    // Fetch weather data from website, then assign that data to a variable
+    const weatherResponse = await fetch('https://api.weatherapi.com/v1/current.json?key=4b877b769355464b816210331231212&q=milwaukee', {mode: 'cors'})
+    
+    // Format weather data into JSON, then assigne that data to a variable
+    const weatherData = await weatherResponse.json();
+
+    // DOM - Display weather data on webpage
+    city.textContent = 'City: ' + weatherData.location.name;
+    temperature.textContent = 'Temperature: ' + weatherData.current.temp_f + ' degrees F';
+    windSpeed.textContent = 'Wind Speed: ' + weatherData.current.wind_mph;
+    windDirection.textContent = 'Wind Direction: ' + weatherData.current.wind_degree + ' degrees ' + weatherData.current.wind_dir;
+    precipitation.textContent = 'Condition: ' + weatherData.current.condition.text;
+}
+getWeather();
+/*
 // Promise of getting weather data from Milwaukee
 fetch('https://api.weatherapi.com/v1/current.json?key=4b877b769355464b816210331231212&q=milwaukee', {mode: 'cors'})
     .then(function(response) {
@@ -59,3 +84,4 @@ fetch('https://api.weatherapi.com/v1/current.json?key=4b877b769355464b8162103312
     .catch(function(err) {
         console.log('Did not get the weather data: ' + err);
     });
+*/
